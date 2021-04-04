@@ -46,7 +46,7 @@ const hulu: Company = {
       start: 'February 2021',
       end: 'Present',
       bullets: [
-        'Coached, led, and mentored a team of up to 7 geographically distributed full-stack engineers to ship beautiful and accessible React applications.',
+        'Coached, led, and mentored a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
         'Recruited and retained world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
         'Provided technical leadership and guidance on a number of technologies, including AWS, React, GraphQL, NodeJS, Typescript, Terraform, Vault, Kubernetes, Spinnaker, and others.',
       ],

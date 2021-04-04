@@ -13,10 +13,11 @@ function Landing(): JSX.Element {
         <div>
           <h1>Arad Margalit</h1>
           <h2>Software Engineering Manager at Hulu</h2>
-          <h3>
-            Hi there, I&apos;m Arad! I currently manage a team of software engineers for Hulu&apos;s Ad Platform, and
-            love running, biking, hiking, swimming, and coding in my spare time.
-          </h3>
+          <h3>Hi there, I&apos;m Arad!</h3>
+          <p>
+            I currently manage a team of software engineers for Hulu&apos;s Ad Platform, building full-stack web
+            applications. In my free time, I love running, biking, hiking, swimming, and coding in my spare time.
+          </p>
         </div>
         <StaticImage
           className="main-photo"
