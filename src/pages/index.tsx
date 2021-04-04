@@ -5,10 +5,16 @@ import { StaticImage } from 'gatsby-plugin-image';
 import { SiLinkedin } from '@react-icons/all-files/si/SiLinkedin';
 import { SiGithub } from '@react-icons/all-files/si/SiGithub';
 import { Link } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
 function Landing(): JSX.Element {
   return (
     <div className="landing">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Arad Margalit</title>
+        <html lang="en" />
+      </Helmet>
       <div className="grid">
         <div>
           <h1>Arad Margalit</h1>
@@ -31,10 +37,15 @@ function Landing(): JSX.Element {
             <span>Résumé</span>
           </Link>
           <div className="socials">
-            <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/arad-margalit-6a0271a6/">
+            <a
+              aria-label="LinkedIn Icon"
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/arad-margalit-6a0271a6/"
+            >
               <SiLinkedin size="3em" />
             </a>
-            <a target="_blank" rel="noreferrer" href="https://github.com/aradmargalit">
+            <a aria-label="Github Icon" target="_blank" rel="noreferrer" href="https://github.com/aradmargalit">
               <SiGithub size="3em" />
             </a>
           </div>

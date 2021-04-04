@@ -3,6 +3,7 @@ import '@fontsource/merriweather';
 import './resume.scss';
 import { Link } from 'gatsby';
 import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';
+import { Helmet } from 'react-helmet';
 import CompanyList from '../components/CompanyList';
 import { companies, education, skills } from '../resumeConfig';
 import EducationView from '../components/EducationView';
@@ -11,6 +12,11 @@ import SkillList from '../components/SkillList';
 function Resume(): JSX.Element {
   return (
     <div className="resume">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Arad Margalit</title>
+        <html lang="en" />
+      </Helmet>
       <div className="resume__header">
         <Link to="/">
           <IoMdArrowBack size="2em" />
