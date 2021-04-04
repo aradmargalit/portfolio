@@ -1,0 +1,12 @@
+.company-list {
+  list-style-type: none;
+  padding-left: 0;
+
+
+
+  .company-view {
+    &:not(:last-child) {
+      border-bottom: 1px solid gray;
+    }
+  }
+}

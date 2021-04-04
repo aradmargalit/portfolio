@@ -1,0 +1,19 @@
+@import "../constants.scss";
+
+.resume {
+  @include page-styles;
+
+  &__header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    a {
+      margin-right: 2em;
+    }
+  }
+
+  .section {
+    margin-top: 5vh;
+  }
+}
