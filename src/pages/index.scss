@@ -13,6 +13,12 @@
     display: grid;
     grid-template: auto auto / auto auto;
 
+    /* Responsive layout - makes a one column layout instead of a two-column layout */
+    @media (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     h1 {
       font-size: xxx-large;
     }
