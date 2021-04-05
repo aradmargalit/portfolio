@@ -22,7 +22,8 @@ function Landing(): JSX.Element {
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
             I currently manage a team of software engineers for Hulu&apos;s Ad Platform, building full-stack web
-            applications. In my free time, I love running, biking, hiking, swimming, and coding in my spare time.
+            applications. In my free time, I love running, biking, hiking, swimming, coding, and spending quality time
+            with my cat, Phoebe.
           </p>
         </div>
         <StaticImage
