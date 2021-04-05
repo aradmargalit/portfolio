@@ -1,0 +1,11 @@
+.skill-list {
+  ul {
+    // On larger screens, use multiple columns
+    @media (min-width: 500px) {
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+  }
+}

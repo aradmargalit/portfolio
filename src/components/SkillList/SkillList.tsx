@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Skill } from '../../types';
+import './SkillList.scss';
 
 interface SkillListProps {
   skills: Skill[];
