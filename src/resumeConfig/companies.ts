@@ -46,9 +46,9 @@ const hulu: Company = {
       start: 'February 2021',
       end: 'Present',
       bullets: [
-        'Coached, led, and mentored a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
-        'Recruited and retained world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
-        'Provided technical leadership and guidance on a number of technologies, including AWS, React, GraphQL, NodeJS, Typescript, Terraform, Vault, Kubernetes, Spinnaker, and others.',
+        'Coaching, leading, and mentoring a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
+        'Recruiting and retaining world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
+        'Providing technical leadership and guidance on a number of technologies, including AWS, React, GraphQL, NodeJS, Typescript, Terraform, Vault, Kubernetes, Spinnaker, and others.',
       ],
     },
     {
@@ -58,7 +58,7 @@ const hulu: Company = {
       bullets: [
         'Led design and implementation for a React Typescript, GraphQL-powered internal application for ad trafficking.',
         'Shipped and deployed performant and scalable applications capable of handling over 20,000 requests per second with sub-10ms response times.',
-        'Spearheaded migration of critical services to AWS leverages RDS, Elasticache, Terraform, ECS, EKS, and more.',
+        'Spearheaded migration of critical services to AWS by leveraging RDS, Elasticache, Terraform, ECS, EKS, and more.',
       ],
     },
     {
