@@ -1,11 +1,56 @@
 .skill-list {
+
   ul {
-    // On larger screens, use multiple columns
-    @media (min-width: 500px) {
-      height: 250px;
+    // Remove indent from list
+    padding: 0;
+  }
+
+  li {
+    // Remove bullet point
+    list-style: none;
+  }
+
+  .skill {
+    margin-bottom: 1em;
+
+    &__title {
+      font-weight: bolder;
+      font-size: large;
+    }
+
+    &__container, &__progress {
+      width: 500px;
+      border-radius: 5px;
+      height: 2em;
+    }
+
+    &__container {
+      background: lightgray;
+    }
+
+    &__progress {
+      // This minimum width is to ensure that the text has enough room
+      // a higher width will be set in the component
+      min-width: 5em;
+      background: #0a0a63;
+        
+      // Center the text vertically in the div
       display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
+      align-items: center;
+
+      // Animate the progress bar sliding
+      transition: width 2s ease-in-out;
+      transition-delay: 500;
+
+      // Push the text off the edge a bit
+      > span {
+        margin-left: 0.5em;
+      }
+    }
+
+    &__label {
+      color: white;
+      font-weight: bolder;
     }
   }
 }

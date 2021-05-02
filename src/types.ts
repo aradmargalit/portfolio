@@ -1,4 +1,4 @@
-export type Skill = { skill: string; yearsExperience: number };
+export type Skill = { skill: string; startYear: number };
 
 export type Education = {
   name: string;
