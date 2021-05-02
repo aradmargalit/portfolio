@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Skill } from '../../types';
 import './SkillList.scss';
 
@@ -6,18 +6,49 @@ interface SkillListProps {
   skills: Skill[];
 }
 
+interface SkillWithYOE extends Skill {
+  yearsOfExperience: number;
+}
+
+function SkillView({ skillData, max }: { skillData: SkillWithYOE; max: number }) {
+  const { skill, yearsOfExperience } = skillData;
+
+  // In order to get a fancy little animation, each of these starts at 0
+  // and changes to its real value on mount
+  const [width, setWidth] = useState<number>(0);
+  useEffect(() => {
+    setWidth(yearsOfExperience * 100);
+  }, []);
+
+  return (
+    <li>
+      <div className="skill">
+        <text className="skill__title">{skill}</text>
+        <div className="skill__container">
+          <div className="skill__progress" style={{ width: `${width / max}%` }}>
+            <span className="skill__label">{yearsOfExperience}+ years</span>
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+}
+
 function SkillList({ skills }: SkillListProps): JSX.Element {
   // Sort by the most years of experience
-  const sortedSkillList = useMemo(() => skills.sort((a, b) => b.yearsExperience - a.yearsExperience), [skills]);
+  const sortedSkillList = useMemo(() => skills.sort((a, b) => a.startYear - b.startYear), [skills]);
+
+  const currentYear = useMemo(() => new Date().getFullYear(), []);
+  const skillsWithYOE: SkillWithYOE[] = sortedSkillList.map((skill) => {
+    return { ...skill, yearsOfExperience: Math.max(currentYear - skill.startYear, 1) };
+  });
+  const max = useMemo(() => Math.max(...skillsWithYOE.map((x) => x.yearsOfExperience)), [sortedSkillList]);
 
   return (
     <div className="skill-list">
-      <p>Skill or Technology and Years of Relevant Experience</p>
       <ul>
-        {sortedSkillList.map((skill) => (
-          <li>
-            {skill.skill}: {skill.yearsExperience} years
-          </li>
+        {skillsWithYOE.map((skill) => (
+          <SkillView skillData={skill} max={max} />
         ))}
       </ul>
     </div>
