@@ -44,7 +44,7 @@ const hulu: Company = {
     {
       title: 'Software Engineering Manager (Manager Level 4)',
       start: 'February 2021',
-      end: 'Present',
+      end: 'May 2021',
       bullets: [
         'Coaching, leading, and mentoring a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
         'Recruiting and retaining world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
@@ -74,5 +74,21 @@ const hulu: Company = {
   ],
 };
 
+const tempo: Company = {
+  name: 'Tempo',
+  link: 'https://tempo.fit/',
+  roles: [
+    {
+      title: 'Staff Software Engineer',
+      start: 'June 2021',
+      end: 'Present',
+      bullets: [
+        'Implementing complex features on the Tempo Studio device, driving user engagement and retention.',
+        'Leading cross-functional teams across backend, mobile, and frontend to deliver critical projects.',
+      ],
+    },
+  ],
+};
+
 // Export in display order -- first company is at the top
-export const companies: Company[] = [hulu, hitachi];
+export const companies: Company[] = [tempo, hulu, hitachi];

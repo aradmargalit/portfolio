@@ -18,12 +18,10 @@ function Landing(): JSX.Element {
       <div className="grid">
         <div>
           <h1>Arad Margalit</h1>
-          <h2>Software Engineering Manager at Hulu</h2>
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
-            I currently manage a team of software engineers for Hulu&apos;s Ad Platform, building full-stack web
-            applications. In my free time, I love running, biking, hiking, swimming, coding, and spending quality time
-            with my cat, Phoebe.
+            I&apos;m currently working as a Staff Software Engineer at <a href="https://tempo.fit/">Tempo</a>. In my
+            free time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
           </p>
         </div>
         <StaticImage
