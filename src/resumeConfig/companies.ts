@@ -46,9 +46,9 @@ const hulu: Company = {
       start: 'February 2021',
       end: 'May 2021',
       bullets: [
-        'Coaching, leading, and mentoring a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
-        'Recruiting and retaining world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
-        'Providing technical leadership and guidance on a number of technologies, including AWS, React, GraphQL, NodeJS, Typescript, Terraform, Vault, Kubernetes, Spinnaker, and others.',
+        'Coached, led, and mentored a team of up to 7 geographically distributed full-stack engineers to ship industry-leading and accessible React applications.',
+        'Recruited and retained world-class talent by cultivating a culture of growth, trust, autonomy, respect, and fun.',
+        'Provided technical leadership and guidance on a number of technologies, including AWS, React, GraphQL, NodeJS, Typescript, Terraform, Vault, Kubernetes, Spinnaker, and others.',
       ],
     },
     {
@@ -79,12 +79,22 @@ const tempo: Company = {
   link: 'https://tempo.fit/',
   roles: [
     {
-      title: 'Staff Software Engineer',
-      start: 'June 2021',
+      title: 'Engineering Manager',
+      start: 'May 2022',
       end: 'Present',
       bullets: [
-        'Implementing complex features on the Tempo Studio device, driving user engagement and retention.',
-        'Leading cross-functional teams across backend, mobile, and frontend to deliver critical projects.',
+        'Leading a global team of developers across web, iOS, Electron, and backend to ship high-quality features in the connected fitness space.',
+        'Growing, mentoring, and coaching the team through rapid change and challenging obstacles.',
+      ],
+    },
+    {
+      title: 'Staff Software Engineer',
+      start: 'June 2021',
+      end: 'May 2022',
+      bullets: [
+        'Drove cross-functional and cross-platfrom projects from ideation to delivery, launch, and support.',
+        'Implemented complex features on the Tempo Studio device, driving user engagement and retention.',
+        'Led cross-functional teams across backend, mobile, and frontend to deliver critical projects.',
       ],
     },
   ],

@@ -20,8 +20,8 @@ function Landing(): JSX.Element {
           <h1>Arad Margalit</h1>
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
-            I&apos;m currently working as a Staff Software Engineer at <a href="https://tempo.fit/">Tempo</a>. In my
-            free time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
+            I&apos;m currently working as an Engineering Manager at <a href="https://tempo.fit/">Tempo</a>. In my free
+            time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
           </p>
         </div>
         <StaticImage
