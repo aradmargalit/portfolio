@@ -20,7 +20,7 @@ function Landing(): JSX.Element {
           <h1>Arad Margalit</h1>
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
-            I&apos;m currently working as an Engineering Manager at <a href="https://tempo.fit/">Tempo</a>. In my free
+            I&apos;m currently working as an Engineering Manager at <a href="https://twitch.tv/">Twitch</a>. In my free
             time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
           </p>
         </div>
@@ -40,7 +40,7 @@ function Landing(): JSX.Element {
               aria-label="LinkedIn Icon"
               target="_blank"
               rel="noreferrer"
-              href="https://www.linkedin.com/in/arad-margalit-6a0271a6/"
+              href="https://www.linkedin.com/in/arad-margalit/"
             >
               <SiLinkedin size="3em" />
             </a>

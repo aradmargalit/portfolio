@@ -81,10 +81,12 @@ const tempo: Company = {
     {
       title: 'Engineering Manager',
       start: 'May 2022',
-      end: 'Present',
+      end: 'November 2022',
       bullets: [
-        'Leading a global team of developers across web, iOS, Electron, and backend to ship high-quality features in the connected fitness space.',
-        'Growing, mentoring, and coaching the team through rapid change and challenging obstacles.',
+        'Led a global team of 8 developers across web, iOS, Electron, and backend services to ship quality user-facing features in the connected fitness space.',
+        'Shaped and improved the technical recruiting process to attract and hire talented engineers.',
+        'Orchestrated up to 7 simultaneous projects across the company, indentified and removed blockers and ensured projects were developed, launched, and maintained successfully.',
+        'Improved organizational processes including development, incident management, and bug triage.',
       ],
     },
     {
@@ -100,5 +102,18 @@ const tempo: Company = {
   ],
 };
 
+const twitch: Company = {
+  name: 'Twitch',
+  link: 'https://twitch.tv/',
+  roles: [
+    {
+      title: 'Engineering Manager',
+      start: 'November 2022',
+      end: 'Present',
+      bullets: ['Working with a talented team of engineers to bring the Twitch experience to emerging platforms'],
+    },
+  ],
+};
+
 // Export in display order -- first company is at the top
-export const companies: Company[] = [tempo, hulu, hitachi];
+export const companies: Company[] = [twitch, tempo, hulu, hitachi];
