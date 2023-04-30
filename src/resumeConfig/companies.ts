@@ -110,7 +110,9 @@ const twitch: Company = {
       title: 'Engineering Manager',
       start: 'November 2022',
       end: 'Present',
-      bullets: ['Working with a talented team of engineers to bring the Twitch experience to emerging platforms'],
+      bullets: [
+        'Working with a talented team of engineers to bring the Twitch experience to the living room and emerging platforms'
+      ],
     },
   ],
 };
