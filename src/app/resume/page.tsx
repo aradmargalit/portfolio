@@ -1,24 +1,20 @@
-import React from 'react';
 import '@fontsource/merriweather';
-import './resume.scss';
-import { Link } from 'gatsby';
-import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';
-import { Helmet } from 'react-helmet';
-import CompanyList from '../components/CompanyList';
-import { companies, education, skills } from '../resumeConfig';
-import EducationView from '../components/EducationView';
-import SkillList from '../components/SkillList';
+import './page.scss';
 
-function Resume(): JSX.Element {
+import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';
+import Link from 'next/link';
+import React from 'react';
+
+import CompanyList from '@/components/CompanyList';
+import EducationView from '@/components/EducationView';
+import SkillList from '@/components/SkillList';
+import { companies, education, skills } from '@/resumeConfig';
+
+function Resume() {
   return (
     <div className="resume">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Arad Margalit</title>
-        <html lang="en" />
-      </Helmet>
       <div className="resume__header">
-        <Link to="/">
+        <Link href="/">
           <IoMdArrowBack size="2em" />
         </Link>
         <h1>Résumé</h1>

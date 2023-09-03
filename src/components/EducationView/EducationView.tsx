@@ -1,11 +1,12 @@
 import React from 'react';
+
 import { Education } from '../../types';
 
 interface EducationProps {
   education: Education;
 }
 
-function EducationView({ education }: EducationProps): JSX.Element {
+function EducationView({ education }: EducationProps) {
   return (
     <div className="education">
       <h3>{education.name}</h3>

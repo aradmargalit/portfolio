@@ -21,4 +21,5 @@ export const skills: Skill[] = [
   { skill: 'Terraform', startYear: 2019 },
   { skill: 'Kafka', startYear: 2019 },
   { skill: 'GraphQL', startYear: 2019 },
+  { skill: 'NextJS', startYear: 2022 },
 ];

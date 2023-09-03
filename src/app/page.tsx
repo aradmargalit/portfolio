@@ -1,20 +1,17 @@
-import React from 'react';
 import '@fontsource/merriweather';
-import './index.scss';
-import { StaticImage } from 'gatsby-plugin-image';
-import { SiLinkedin } from '@react-icons/all-files/si/SiLinkedin';
-import { SiGithub } from '@react-icons/all-files/si/SiGithub';
-import { Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
+import './page.scss';
 
-function Landing(): JSX.Element {
+import { SiGithub } from '@react-icons/all-files/si/SiGithub';
+import { SiLinkedin } from '@react-icons/all-files/si/SiLinkedin';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
+
+import profile from './profile.jpeg';
+
+export default function Landing() {
   return (
     <div className="landing">
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Arad Margalit</title>
-        <html lang="en" />
-      </Helmet>
       <div className="grid">
         <div>
           <h1>Arad Margalit</h1>
@@ -24,15 +21,9 @@ function Landing(): JSX.Element {
             time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
           </p>
         </div>
-        <StaticImage
-          className="main-photo"
-          src="../images/profile.jpeg"
-          alt="Picture of Arad hiking"
-          placeholder="blurred"
-          height={350}
-        />
+        <Image className="main-photo" src={profile} alt="Picture of Arad hiking" placeholder="blur" />
         <div className="resume-socials">
-          <Link className="resume-link" to="/resume">
+          <Link className="resume-link" href="/resume">
             <span>Résumé</span>
           </Link>
           <div className="socials">
@@ -53,5 +44,3 @@ function Landing(): JSX.Element {
     </div>
   );
 }
-
-export default Landing;

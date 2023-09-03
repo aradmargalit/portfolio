@@ -1,4 +1,4 @@
-@import "../constants.scss";
+@import '../constants.scss';
 
 .landing {
   @include page-styles;
@@ -23,7 +23,8 @@
       font-size: xxx-large;
     }
 
-    img, picture {
+    img,
+    picture {
       height: 350px;
       width: 350px;
       border-radius: 50%;
@@ -38,21 +39,21 @@
         font-size: x-large;
         margin-bottom: 1em;
       }
-  
+
       .socials {
         display: flex;
         justify-content: left;
         align-items: center;
-  
+
         a {
           margin-right: 2em;
           color: black;
-  
+
           &:hover {
             color: darkslategray;
           }
         }
       }
     }
-  } 
+  }
 }

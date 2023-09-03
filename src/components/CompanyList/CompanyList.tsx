@@ -1,6 +1,8 @@
-import React from 'react';
-import { Company } from '../../types';
 import './CompanyList.scss';
+
+import React from 'react';
+
+import { Company } from '../../types';
 
 interface CompanyListProps {
   companies: Company[];
@@ -17,7 +19,7 @@ function RoleView({ role }: { role: Company['roles'][number] }) {
       </p>
       <ul>
         {role.bullets.map((bullet) => (
-          <li>
+          <li key={bullet}>
             <p>{bullet}</p>
           </li>
         ))}
@@ -34,18 +36,18 @@ function CompanyView({ company }: { company: Company }) {
       </a>
       <ul>
         {company.roles.map((role) => (
-          <RoleView role={role} />
+          <RoleView key={role.title} role={role} />
         ))}
       </ul>
     </li>
   );
 }
 
-function CompanyList({ companies }: CompanyListProps): JSX.Element {
+function CompanyList({ companies }: CompanyListProps) {
   return (
     <ul className="company-list">
       {companies.map((company) => (
-        <CompanyView company={company} />
+        <CompanyView key={company.name} company={company} />
       ))}
     </ul>
   );
