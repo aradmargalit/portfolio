@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import profile from '../images/profile.jpeg';
+import profile from './profile.jpeg';
 
 export default function Landing() {
   return (
