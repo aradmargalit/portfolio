@@ -1,6 +1,10 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Skill } from '../../types';
+'use client';
+
 import './SkillList.scss';
+
+import React, { useEffect, useMemo, useState } from 'react';
+
+import { Skill } from '../../types';
 
 interface SkillListProps {
   skills: Skill[];
@@ -18,7 +22,7 @@ function SkillView({ skillData, max }: { skillData: SkillWithYOE; max: number })
   const [width, setWidth] = useState<number>(0);
   useEffect(() => {
     setWidth(yearsOfExperience * 100);
-  }, []);
+  }, [yearsOfExperience]);
 
   return (
     <li>
@@ -34,7 +38,7 @@ function SkillView({ skillData, max }: { skillData: SkillWithYOE; max: number })
   );
 }
 
-function SkillList({ skills }: SkillListProps): JSX.Element {
+function SkillList({ skills }: SkillListProps) {
   // Sort by the most years of experience
   const sortedSkillList = useMemo(() => skills.sort((a, b) => a.startYear - b.startYear), [skills]);
 
@@ -42,13 +46,13 @@ function SkillList({ skills }: SkillListProps): JSX.Element {
   const skillsWithYOE: SkillWithYOE[] = sortedSkillList.map((skill) => {
     return { ...skill, yearsOfExperience: Math.max(currentYear - skill.startYear, 1) };
   });
-  const max = useMemo(() => Math.max(...skillsWithYOE.map((x) => x.yearsOfExperience)), [sortedSkillList]);
+  const max = useMemo(() => Math.max(...skillsWithYOE.map((x) => x.yearsOfExperience)), [skillsWithYOE]);
 
   return (
     <div className="skill-list">
       <ul>
         {skillsWithYOE.map((skill) => (
-          <SkillView skillData={skill} max={max} />
+          <SkillView key={skill.skill} skillData={skill} max={max} />
         ))}
       </ul>
     </div>

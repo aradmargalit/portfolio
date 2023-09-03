@@ -1,6 +1,6 @@
 # Portfolio Site
 
-This site was built with [GatsbyJS](https://www.gatsbyjs.com) and hosts my resume and contact information.
+This site was built with [NextJS](https://www.nextjs.org) and hosts my resume and contact information.
 
 ## 🚀 Quick start
 

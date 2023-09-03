@@ -4,42 +4,34 @@
   "private": true,
   "description": "Portfolio Site",
   "author": "Arad Margalit",
-  "keywords": [
-    "gatsby"
-  ],
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint --fix"
   },
   "dependencies": {
     "@fontsource/merriweather": "^4.5.14",
     "@react-icons/all-files": "^4.1.0",
-    "gatsby": "^5.9.0",
-    "gatsby-plugin-gatsby-cloud": "^5.9.0",
-    "gatsby-plugin-image": "^3.9.0",
-    "gatsby-plugin-manifest": "^5.9.0",
-    "gatsby-plugin-react-helmet": "^6.9.0",
-    "gatsby-plugin-sass": "^6.9.0",
-    "gatsby-plugin-sharp": "^5.9.0",
-    "gatsby-source-filesystem": "^5.9.0",
-    "gatsby-transformer-remark": "^6.9.0",
-    "gatsby-transformer-sharp": "^5.9.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-helmet": "^6.1.0",
-    "sass": "^1.62.1"
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.6",
+    "@next/eslint-plugin-next": "^13.4.19",
+    "@types/node": "20.5.9",
+    "@types/react": "18.2.21",
     "@typescript-eslint/parser": "^5.59.1",
-    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-next": "^13.4.19",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.1.2",
+    "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^2.8.8",
+    "sass": "^1.66.1",
     "typescript": "^5.0.4"
   }
 }

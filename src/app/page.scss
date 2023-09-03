@@ -1,0 +1,59 @@
+@import '../constants.scss';
+
+.landing {
+  @include page-styles;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .grid {
+    display: grid;
+    grid-template: auto auto / auto auto;
+
+    /* Responsive layout - makes a one column layout instead of a two-column layout */
+    @media (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: xxx-large;
+    }
+
+    img,
+    picture {
+      height: 350px;
+      width: 350px;
+      border-radius: 50%;
+    }
+
+    .resume-socials {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .resume-link {
+        font-size: x-large;
+        margin-bottom: 1em;
+      }
+
+      .socials {
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        a {
+          margin-right: 2em;
+          color: black;
+
+          &:hover {
+            color: darkslategray;
+          }
+        }
+      }
+    }
+  }
+}

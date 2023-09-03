@@ -1,5 +1,4 @@
 .skill-list {
-
   ul {
     // Remove indent from list
     padding: 0;
@@ -18,7 +17,8 @@
       font-size: large;
     }
 
-    &__container, &__progress {
+    &__container,
+    &__progress {
       width: 500px;
       border-radius: 5px;
       height: 2em;
@@ -33,7 +33,7 @@
       // a higher width will be set in the component
       min-width: 5em;
       background: #0a0a63;
-        
+
       // Center the text vertically in the div
       display: flex;
       align-items: center;
