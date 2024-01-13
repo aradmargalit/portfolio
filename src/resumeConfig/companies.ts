@@ -107,12 +107,10 @@ const twitch: Company = {
   name: 'Twitch',
   roles: [
     {
-      bullets: [
-        'Working with a talented team of engineers to bring the Twitch experience to the living room and emerging platforms',
-      ],
+      bullets: ['Working with a talented team of engineers to build and deliver Twitch around the world'],
       end: 'Present',
       start: 'November 2022',
-      title: 'Engineering Manager',
+      title: 'Senior Engineering Manager',
     },
   ],
 };
