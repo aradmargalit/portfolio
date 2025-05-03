@@ -18,7 +18,7 @@ export default function Landing() {
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
             I&apos;m currently working as an Engineering Manager at <a href="https://twitch.tv/">Twitch</a>. In my free
-            time, I love running, biking, hiking, swimming, coding, and spending quality time with my cat, Phoebe.
+            time, I love running, biking, hiking, swimming, and coding.
           </p>
         </div>
         <Image className="main-photo" src={profile} alt="Picture of Arad hiking" placeholder="blur" />

@@ -1,7 +1,7 @@
-@import '../../constants.scss';
+@use '../../constants.scss';
 
 .resume {
-  @include page-styles;
+  @include constants.page-styles;
 
   &__header {
     display: flex;

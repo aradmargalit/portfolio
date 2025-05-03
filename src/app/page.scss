@@ -1,7 +1,7 @@
-@import '../constants.scss';
+@use '../constants.scss';
 
 .landing {
-  @include page-styles;
+  @include constants.page-styles;
 
   height: 100vh;
 

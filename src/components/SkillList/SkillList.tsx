@@ -27,7 +27,7 @@ function SkillView({ skillData, max }: { skillData: SkillWithYOE; max: number })
   return (
     <li>
       <div className="skill">
-        <text className="skill__title">{skill}</text>
+        <p className="skill__title">{skill}</p>
         <div className="skill__container">
           <div className="skill__progress" style={{ width: `${width / max}%` }}>
             <span className="skill__label">{yearsOfExperience}+ years</span>
