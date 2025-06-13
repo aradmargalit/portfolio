@@ -1,4 +1,4 @@
-import '@fontsource/merriweather';
+import '@fontsource/inter';
 import './page.scss';
 
 import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';
@@ -19,18 +19,19 @@ function Resume() {
         </Link>
         <h1>Résumé</h1>
       </div>
-
-      <div className="education section">
-        <h2>Education</h2>
-        <EducationView education={education} />
-      </div>
-      <div className="companies section">
-        <h2>Work Experience</h2>
-        <CompanyList companies={companies} />
-      </div>
-      <div className="skills section">
-        <h2>Skills & Technology</h2>
-        <SkillList skills={skills} />
+      <div className="resume__content">
+        <div className="education section card">
+          <h2>Education</h2>
+          <EducationView education={education} />
+        </div>
+        <div className="companies section card">
+          <h2>Work Experience</h2>
+          <CompanyList companies={companies} />
+        </div>
+        <div className="skills section card">
+          <h2>Skills & Technology</h2>
+          <SkillList skills={skills} />
+        </div>
       </div>
     </div>
   );

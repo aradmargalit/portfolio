@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import '@fontsource/inter';
 
 function ThemeToggle() {
   // Use undefined as initial state to avoid SSR mismatch
