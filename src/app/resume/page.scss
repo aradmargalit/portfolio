@@ -2,18 +2,145 @@
 
 .resume {
   @include constants.page-styles;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--color-text);
 
   &__header {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 1em;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 1.5em;
+      align-items: center;
+
+      a {
+        color: var(--color-secondary);
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.2em 0.8em;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover,
+        &:focus {
+          background: var(--color-primary);
+          color: #fff;
+        }
+      }
+    }
 
     a {
-      margin-right: 2em;
+      margin-right: 0;
+      color: var(--color-primary);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+
+      &:hover {
+        color: var(--color-link-hover);
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .section.card {
+    background: var(--color-card);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-card);
+    padding: 2rem 2.5rem;
+    min-width: 320px;
+    margin-top: 0;
+    transition: box-shadow 0.2s;
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--color-primary);
+      font-family: inherit;
+    }
+  }
+
+  .education.section.card {
+    width: auto;
+    max-width: none;
+    min-width: 320px;
+    padding: 2rem 2.5rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .skills.section.card {
+    padding: 2rem 2.5rem;
+    font-size: 1rem;
+    min-width: 320px;
+    max-width: none;
+    flex: 1 1 320px;
+    background: var(--color-card);
+    color: var(--color-text);
+    box-shadow: var(--shadow-card);
+    border: none;
+
+    h2 {
+      color: var(--color-primary);
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    ul,
+    li {
+      color: var(--color-text);
     }
   }
 
   .section {
-    margin-top: 5vh;
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .resume__content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .resume .section.card,
+  .resume .education.section.card,
+  .resume .skills.section.card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 1.2rem 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 }

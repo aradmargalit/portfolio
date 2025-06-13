@@ -1,14 +1,16 @@
-import { Metadata } from 'next';
+import '@fontsource/inter';
+
 import React from 'react';
 
-export const metadata: Metadata = {
-  title: 'Arad Margalit',
-};
+import ThemeToggle from '../components/ThemeToggle';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ThemeToggle />
+        {children}
+      </body>
     </html>
   );
 }
