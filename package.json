@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.6",
-    "@fontsource/merriweather": "^5.2.9",
     "@react-icons/all-files": "^4.1.0",
     "next": "^15.3.3",
     "react": "^19.1.0",

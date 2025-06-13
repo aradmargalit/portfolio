@@ -1,4 +1,3 @@
-import '@fontsource/merriweather';
 import './page.scss';
 
 import { SiGithub } from '@react-icons/all-files/si/SiGithub';
