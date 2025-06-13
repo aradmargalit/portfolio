@@ -50,7 +50,7 @@ a:hover {
 .landing {
   @include constants.page-styles;
 
-  height: 100vh;
+  height: 80vh;
 
   display: flex;
   flex-direction: column;

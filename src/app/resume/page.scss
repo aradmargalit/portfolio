@@ -10,11 +10,15 @@
     justify-content: left;
     align-items: center;
     margin-bottom: 2.5rem;
+    gap: 1em;
 
     a {
-      margin-right: 2em;
+      margin-right: 0;
       color: var(--color-primary);
       transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
       &:hover {
         color: var(--color-link-hover);
       }
@@ -24,6 +28,9 @@
       font-weight: 800;
       letter-spacing: -1px;
       margin: 0;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
     }
   }
 
