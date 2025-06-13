@@ -2,9 +2,46 @@
 
 import './SkillList.scss';
 
-import React, { useMemo } from 'react';
 import { IconType } from '@react-icons/all-files';
-import { FaReact, FaNodeJs, FaPython, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaDatabase, FaAws, FaDocker, FaLinux, FaJava, FaGithub, FaSass, FaAngular, FaVuejs, FaPhp, FaSwift, FaRust, FaCuttlefish, FaFigma } from 'react-icons/fa';
+import React, { useMemo } from 'react';
+import {
+  FaAngular,
+  FaAws,
+  FaCss3Alt,
+  FaCuttlefish,
+  FaDatabase,
+  FaDocker,
+  FaFigma,
+  FaGitAlt,
+  FaGithub,
+  FaHtml5,
+  FaJava,
+  FaJs,
+  FaLinux,
+  FaNodeJs,
+  FaPhp,
+  FaPython,
+  FaReact,
+  FaRust,
+  FaSass,
+  FaSwift,
+  FaVuejs,
+} from 'react-icons/fa';
+import {
+  SiDatadog,
+  SiGatsby,
+  SiGraphql,
+  SiKubernetes,
+  SiMysql,
+  SiNextdotjs,
+  SiPostgresql,
+  SiSpinnaker,
+  SiTerraform,
+  SiTypescript,
+  SiVault,
+} from 'react-icons/si';
+import { FaGolang } from "react-icons/fa6";
+
 
 import { Skill } from '../../types';
 
@@ -14,30 +51,46 @@ interface SkillListProps {
 
 // Map skill names to icons
 const skillIcons: Record<string, IconType> = {
-  React: FaReact,
+  Kubernetes: SiKubernetes,
+  MySQL: SiMysql,
+  NextJS: SiNextdotjs,
+  Datadog: SiDatadog,
   'Node.js': FaNodeJs,
-  Python: FaPython,
-  HTML: FaHtml5,
-  HTML5: FaHtml5,
-  CSS: FaCss3Alt,
-  CSS3: FaCss3Alt,
-  JavaScript: FaJs,
-  Git: FaGitAlt,
-  Database: FaDatabase,
-  AWS: FaAws,
+  GatsbyJS: SiGatsby,
+  NodeJS: FaNodeJs,
   Docker: FaDocker,
-  Linux: FaLinux,
-  Java: FaJava,
+  React: FaReact,
+  GraphQL: SiGraphql,
+  ReactJS: FaReact,
+  Go: FaGolang,
+  Python: FaPython,
+  'C#': FaCuttlefish,
+  AWS: FaAws,
+  Typescript: SiTypescript,
+  HTML: FaHtml5,
+  Spinnaker: SiSpinnaker,
+  CSS: FaCss3Alt,
+  Vault: SiVault,
+  CSS3: FaCss3Alt,
+  Git: FaGitAlt,
+  Postgres: SiPostgresql,
+  Database: FaDatabase,
   GitHub: FaGithub,
-  Sass: FaSass,
+  Terraform: SiTerraform,
   Angular: FaAngular,
-  Vue: FaVuejs,
-  PHP: FaPhp,
-  Swift: FaSwift,
-  Rust: FaRust,
+  HTML5: FaHtml5,
+  Ruby: FaCuttlefish,
   C: FaCuttlefish,
+  Java: FaJava,
   'C++': FaCuttlefish,
   Figma: FaFigma,
+  JavaScript: FaJs,
+  Linux: FaLinux,
+  PHP: FaPhp,
+  Rust: FaRust,
+  Sass: FaSass,
+  Swift: FaSwift,
+  Vue: FaVuejs,
 };
 
 function SkillList({ skills }: SkillListProps) {
@@ -51,7 +104,9 @@ function SkillList({ skills }: SkillListProps) {
           const Icon = skillIcons[skill.skill] || null;
           return (
             <li key={skill.skill} className="skill-list__item">
-              {Icon && <Icon className="skill-list__icon" size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} />}
+              {Icon && (
+                <Icon className="skill-list__icon" size={20} style={{ marginRight: 8, verticalAlign: 'middle' }} />
+              )}
               {skill.skill}
             </li>
           );

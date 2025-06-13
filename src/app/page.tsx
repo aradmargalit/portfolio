@@ -3,10 +3,10 @@ import './page.scss';
 
 import { SiGithub } from '@react-icons/all-files/si/SiGithub';
 import { SiLinkedin } from '@react-icons/all-files/si/SiLinkedin';
-import { FaRegFileAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import { FaRegFileAlt } from 'react-icons/fa';
 
 import profile from './profile.jpeg';
 

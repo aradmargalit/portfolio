@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
 import '@fontsource/inter';
+
+import React, { useEffect, useState } from 'react';
 
 function ThemeToggle() {
   // Use undefined as initial state to avoid SSR mismatch
@@ -56,19 +57,19 @@ function ThemeToggle() {
       aria-label="Toggle theme"
       onClick={toggleTheme}
       style={{
-        position: 'fixed',
-        top: 24,
-        right: 24,
-        zIndex: 100,
         background: 'var(--color-card)',
-        color: 'var(--color-text)',
         border: '1px solid var(--color-border)',
         borderRadius: '999px',
-        padding: '0.5em 1.2em',
-        fontWeight: 600,
         boxShadow: 'var(--shadow-card)',
+        color: 'var(--color-text)',
         cursor: 'pointer',
+        fontWeight: 600,
+        position: 'fixed',
+        padding: '0.5em 1.2em',
+        right: 24,
+        top: 24,
         transition: 'background 0.2s, color 0.2s',
+        zIndex: 100,
       }}
     >
       {theme === 'light' ? '🌙 Dark' : '☀️ Light'}
