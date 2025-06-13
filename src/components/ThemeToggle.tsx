@@ -1,24 +1,24 @@
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-const THEME_KEY = "theme";
+const THEME_KEY = 'theme';
 
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<string>(() => {
-    if (typeof window !== "undefined") {
-      return localStorage.getItem(THEME_KEY) || "light";
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(THEME_KEY) || 'light';
     }
-    return "light";
+    return 'light';
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (
@@ -34,8 +34,8 @@ export default function ThemeToggle() {
         color: 'var(--color-text)',
         cursor: 'pointer',
         fontWeight: 600,
-        position: 'fixed',
         padding: '0.5em 1.2em',
+        position: 'fixed',
         right: 24,
         top: 24,
         transition: 'background 0.2s, color 0.2s',

@@ -27,6 +27,7 @@ import {
   FaSwift,
   FaVuejs,
 } from 'react-icons/fa';
+import { FaGolang } from 'react-icons/fa6';
 import {
   SiDatadog,
   SiGatsby,
@@ -40,8 +41,6 @@ import {
   SiTypescript,
   SiVault,
 } from 'react-icons/si';
-import { FaGolang } from "react-icons/fa6";
-
 
 import { Skill } from '../../types';
 
@@ -51,54 +50,51 @@ interface SkillListProps {
 
 // Map skill names to icons
 const skillIcons: Record<string, IconType> = {
+  AWS: FaAws,
+  Angular: FaAngular,
+  C: FaCuttlefish,
+  'C#': FaCuttlefish,
+  'C++': FaCuttlefish,
+  CSS: FaCss3Alt,
+  CSS3: FaCss3Alt,
+  Database: FaDatabase,
+  Datadog: SiDatadog,
+  Docker: FaDocker,
+  Figma: FaFigma,
+  GatsbyJS: SiGatsby,
+  Git: FaGitAlt,
+  GitHub: FaGithub,
+  Go: FaGolang,
+  GraphQL: SiGraphql,
+  HTML: FaHtml5,
+  HTML5: FaHtml5,
+  Java: FaJava,
+  JavaScript: FaJs,
   Kubernetes: SiKubernetes,
+  Linux: FaLinux,
   MySQL: SiMysql,
   NextJS: SiNextdotjs,
-  Datadog: SiDatadog,
   'Node.js': FaNodeJs,
-  GatsbyJS: SiGatsby,
   NodeJS: FaNodeJs,
-  Docker: FaDocker,
-  React: FaReact,
-  GraphQL: SiGraphql,
-  ReactJS: FaReact,
-  Go: FaGolang,
-  Python: FaPython,
-  'C#': FaCuttlefish,
-  AWS: FaAws,
-  Typescript: SiTypescript,
-  HTML: FaHtml5,
-  Spinnaker: SiSpinnaker,
-  CSS: FaCss3Alt,
-  Vault: SiVault,
-  CSS3: FaCss3Alt,
-  Git: FaGitAlt,
-  Postgres: SiPostgresql,
-  Database: FaDatabase,
-  GitHub: FaGithub,
-  Terraform: SiTerraform,
-  Angular: FaAngular,
-  HTML5: FaHtml5,
-  Ruby: FaCuttlefish,
-  C: FaCuttlefish,
-  Java: FaJava,
-  'C++': FaCuttlefish,
-  Figma: FaFigma,
-  JavaScript: FaJs,
-  Linux: FaLinux,
   PHP: FaPhp,
+  Postgres: SiPostgresql,
+  Python: FaPython,
+  React: FaReact,
+  ReactJS: FaReact,
+  Ruby: FaCuttlefish,
   Rust: FaRust,
   Sass: FaSass,
+  Spinnaker: SiSpinnaker,
   Swift: FaSwift,
+  Terraform: SiTerraform,
+  Typescript: SiTypescript,
+  Vault: SiVault,
   Vue: FaVuejs,
 };
 
 function SkillList({ skills }: SkillListProps) {
   // Sort by startYear ascending
-  const sortedSkillList = useMemo(
-    () => [...skills].sort((a, b) => a.startYear - b.startYear),
-    [skills]
-  );
+  const sortedSkillList = useMemo(() => [...skills].sort((a, b) => a.startYear - b.startYear), [skills]);
 
   return (
     <div className="skill-list">
