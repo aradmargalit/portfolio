@@ -7,10 +7,38 @@
 
   &__header {
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 2.5rem;
     gap: 1em;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 1.5em;
+      align-items: center;
+
+      a {
+        color: var(--color-secondary);
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.2em 0.8em;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover,
+        &:focus {
+          background: var(--color-primary);
+          color: #fff;
+        }
+      }
+    }
 
     a {
       margin-right: 0;
@@ -19,10 +47,12 @@
       display: flex;
       align-items: center;
       height: 2.5rem;
+
       &:hover {
         color: var(--color-link-hover);
       }
     }
+
     h1 {
       font-size: 2.5rem;
       font-weight: 800;
@@ -48,6 +78,7 @@
     min-width: 320px;
     margin-top: 0;
     transition: box-shadow 0.2s;
+
     h2 {
       font-size: 1.5rem;
       font-weight: 700;
@@ -77,14 +108,17 @@
     color: var(--color-text);
     box-shadow: var(--shadow-card);
     border: none;
-  }
-  .skills.section.card h2 {
-    color: var(--color-primary);
-    font-size: 1.5rem;
-    margin-bottom: 1.2rem;
-  }
-  .skills.section.card ul, .skills.section.card li {
-    color: var(--color-text);
+
+    h2 {
+      color: var(--color-primary);
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    ul,
+    li {
+      color: var(--color-text);
+    }
   }
 
   .section {
@@ -97,6 +131,7 @@
     flex-direction: column;
     gap: 1.5rem;
   }
+
   .resume .section.card {
     padding: 1.2rem 1rem;
   }

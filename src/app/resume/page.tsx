@@ -14,21 +14,28 @@ function Resume() {
   return (
     <div className="resume">
       <div className="resume__header">
-        <Link href="/">
-          <IoMdArrowBack size="2em" />
-        </Link>
-        <h1>Résumé</h1>
+        <div className="header-left">
+          <Link href="/">
+            <IoMdArrowBack size="2em" />
+          </Link>
+          <h1>Résumé</h1>
+        </div>
+        <nav className="header-links">
+          <a href="#education">Education</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+        </nav>
       </div>
       <div className="resume__content">
-        <div className="education section card">
+        <div id="education" className="education section card">
           <h2>Education</h2>
           <EducationView education={education} />
         </div>
-        <div className="companies section card">
+        <div id="experience" className="companies section card">
           <h2>Work Experience</h2>
           <CompanyList companies={companies} />
         </div>
-        <div className="skills section card">
+        <div id="skills" className="skills section card">
           <h2>Skills & Technology</h2>
           <SkillList skills={skills} />
         </div>
