@@ -94,8 +94,11 @@ const skillIcons: Record<string, IconType> = {
 };
 
 function SkillList({ skills }: SkillListProps) {
-  // Just list the skills alphabetically
-  const sortedSkillList = useMemo(() => [...skills].sort((a, b) => a.skill.localeCompare(b.skill)), [skills]);
+  // Sort by startYear ascending
+  const sortedSkillList = useMemo(
+    () => [...skills].sort((a, b) => a.startYear - b.startYear),
+    [skills]
+  );
 
   return (
     <div className="skill-list">
