@@ -3,6 +3,7 @@ import './page.scss';
 
 import { SiGithub } from '@react-icons/all-files/si/SiGithub';
 import { SiLinkedin } from '@react-icons/all-files/si/SiLinkedin';
+import { FaRegFileAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -24,6 +25,7 @@ export default function Landing() {
         <Image className="main-photo" src={profile} alt="Picture of Arad hiking" placeholder="blur" />
         <div className="resume-socials">
           <Link className="resume-link" href="/resume">
+            <FaRegFileAlt style={{ marginRight: 8, verticalAlign: 'middle' }} />
             <span>Résumé</span>
           </Link>
           <div className="socials">

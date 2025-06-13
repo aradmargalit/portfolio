@@ -93,24 +93,31 @@ a:hover {
       box-shadow: var(--shadow-card);
       padding: 2rem 1.5rem;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.5rem;
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
 
       .resume-link {
-        font-size: 1.2rem;
-        font-weight: 600;
+        font-size: 1.3rem;
+        font-weight: 700;
         color: var(--color-primary);
-        background: none;
-        border: none;
-        padding: 0.5em 1.2em;
+        background: var(--color-bg-alt);
+        border: 2px solid var(--color-primary);
+        padding: 0.7em 1.6em;
         border-radius: 999px;
-        transition: background 0.2s, color 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5em;
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+        transition: background 0.2s, color 0.2s, border 0.2s;
         cursor: pointer;
+        text-decoration: none;
+        outline: none;
 
-        &:hover {
+        &:hover, &:focus {
           background: var(--color-primary);
           color: #fff;
+          border-color: var(--color-primary);
         }
       }
 
