@@ -7,7 +7,13 @@ const THEME_KEY = 'theme';
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<string>(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem(THEME_KEY) || 'light';
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored) return stored;
+      // Check user preference for dark mode
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
     }
     return 'light';
   });
