@@ -6,5 +6,17 @@
     &:not(:last-child) {
       border-bottom: 1px solid gray;
     }
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      color: var(--color-primary, #0a0a63);
+      transition: color 0.2s;
+
+      &:hover,
+      &:focus {
+        color: var(--color-link-hover, #333399);
+      }
+    }
   }
 }
