@@ -132,7 +132,15 @@
     gap: 1.5rem;
   }
 
-  .resume .section.card {
+  .resume .section.card,
+  .resume .education.section.card,
+  .resume .skills.section.card {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
     padding: 1.2rem 1rem;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
