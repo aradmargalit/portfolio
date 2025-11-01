@@ -69,17 +69,15 @@ function Sweep() {
 				</div>
 			</div>
 			<div className="sweep__content">
-				<div className="content-overlay">
-					<h2>Next street sweeping:</h2>
-					{daysUntil !== null && (
-						<div className="sweep-info">
-							<span className={isWithin7Days ? "urgent" : "safe"}>
-								{daysUntil} {daysUntil === 1 ? "day" : "days"} away
-							</span>
-							<span className="emoji">{isWithin7Days ? "😱" : "🎉"}</span>
-						</div>
-					)}
-				</div>
+				<h2>Next street sweeping:</h2>
+				{daysUntil !== null && (
+					<div className="sweep-info">
+						<span className={isWithin7Days ? "urgent" : "safe"}>
+							{daysUntil} {daysUntil === 1 ? "day" : "days"} away
+						</span>
+						<span className="emoji">{isWithin7Days ? "😱" : "🎉"}</span>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -72,31 +72,12 @@
     align-items: center;
     text-align: center;
     position: relative;
-    min-height: 400px;
+    min-height: 300px;
     padding: 40px 20px;
     justify-content: center;
-    background-color: transparent;
-    z-index: 1;
-    position: relative;
   }
 }
 
-/* Background image for the content area */
-.sweep__content::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('/tools/sweep/truck.png');
-  background-size: 300px auto;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.10;
-  z-index: -1;
-  pointer-events: none;
-}
 
 /* Heading for street sweeping */
 .sweep__content h2 {
@@ -104,8 +85,6 @@
   font-weight: 700;
   margin: 0;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 2;
 }
 
 /* Container for the countdown info */
@@ -116,8 +95,6 @@
   margin: 0;
   font-size: 4.5rem;
   font-weight: bold;
-  position: relative;
-  z-index: 2;
 }
 
 /* Urgent state - red gradient text */
