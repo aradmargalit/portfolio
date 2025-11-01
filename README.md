@@ -6,7 +6,7 @@ This site was built with [NextJS](https://www.nextjs.org) and hosts my resume an
 
 ```sh
 # Run a development version of the project
-npm run develop
+npm run dev
 
 # Build a production version
 npm run build
