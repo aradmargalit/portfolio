@@ -75,77 +75,79 @@
     min-height: 400px;
     padding: 40px 20px;
     justify-content: center;
-    background: transparent;
+    background-color: transparent;
     z-index: 1;
-
-    .background-image-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      pointer-events: none;
-
-      .background-image {
-        width: 60%;
-        height: auto;
-        opacity: 0.10;
-        object-fit: contain;
-      }
-    }
-
-    h2 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 0;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    .sweep-info {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0;
-      font-size: 4.5rem;
-      font-weight: bold;
-
-      span {
-        position: relative;
-        z-index: 2;
-        &.urgent {
-          background: linear-gradient(45deg, #ff4040, #ff8080, #ff4040, #ff0000);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          text-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
-          animation: urgentGradient 3s ease infinite;
-        }
-
-        &.safe {
-          position: relative;
-          z-index: 2;
-          background: linear-gradient(45deg, #40c040, #80ff80, #40c040, #00cc00);
-          background-size: 300% 300%;
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          text-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
-          animation: safeGradient 3s ease infinite;
-        }
-
-        &.emoji {
-          margin-left: 0.5rem;
-        }
-      }
-    }
+    position: relative;
   }
 }
 
+/* Background image for the content area */
+.sweep__content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/tools/sweep/truck.png');
+  background-size: 300px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.10;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Heading for street sweeping */
+.sweep__content h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+/* Container for the countdown info */
+.sweep__content .sweep-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: 4.5rem;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+}
+
+/* Urgent state - red gradient text */
+.sweep__content .sweep-info .urgent {
+  background: linear-gradient(45deg, #ff4040, #ff8080, #ff4040, #ff0000);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+  animation: urgentGradient 3s ease infinite;
+}
+
+/* Safe state - green gradient text */
+.sweep__content .sweep-info .safe {
+  background: linear-gradient(45deg, #40c040, #80ff80, #40c040, #00cc00);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
+  animation: safeGradient 3s ease infinite;
+}
+
+/* Emoji styling */
+.sweep__content .sweep-info .emoji {
+  margin-left: 0.5rem;
+}
+
+/* Animation keyframes for gradients */
 @keyframes urgentGradient {
   0% {
     background-position: 0% 50%;
@@ -170,6 +172,7 @@
   }
 }
 
+/* Responsive styles */
 @media (max-width: 900px) {
   .skills_content {
     flex-direction: column;
