@@ -1,4 +1,5 @@
 @use '../../../constants.scss';
+@import '../../page.scss';
 
 .sweep {
   @include constants.page-styles;
@@ -72,25 +73,70 @@
     text-align: center;
 
     h2 {
-      font-size: 2.2rem;
-      font-weight: 600;
+      font-size: 3rem;
+      font-weight: 700;
       margin: 0;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    p {
+    .sweep-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0;
-      transition: color 0.3s ease;
-      font-size: 3rem;
+      font-size: 4.5rem;
       font-weight: bold;
 
-      &.urgent {
-        color: #ff4040;
-      }
+      span {
+        &.urgent {
+          background: linear-gradient(45deg, #ff4040, #ff8080, #ff4040, #ff0000);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+          animation: urgentGradient 3s ease infinite;
+        }
 
-      &.safe {
-        color: #40c040;
+        &.safe {
+          background: linear-gradient(45deg, #40c040, #80ff80, #40c040, #00cc00);
+          background-size: 300% 300%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          text-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
+          animation: safeGradient 3s ease infinite;
+        }
+
+        &.emoji {
+          margin-left: 0.5rem;
+        }
       }
     }
+  }
+}
+
+@keyframes urgentGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes safeGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 

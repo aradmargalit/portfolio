@@ -57,7 +57,7 @@ function Sweep() {
 		setDaysUntil(diffDays);
 	}, []);
 
-	const isWithin7Days = daysUntil !== null && daysUntil <= 7;
+	const isWithin7Days = daysUntil !== null && daysUntil>= 7;
 
 	return (
 		<div className="sweep">
@@ -71,10 +71,12 @@ function Sweep() {
 			<div className="sweep__content">
 				<h2>Next street sweeping:</h2>
 				{daysUntil !== null && (
-					<p className={isWithin7Days ? "urgent" : "safe"}>
-						{daysUntil} {daysUntil === 1 ? "day" : "days"} away{" "}
-						{isWithin7Days ? "😱" : "🎉"}
-					</p>
+					<div className="sweep-info">
+						<span className={isWithin7Days ? "urgent" : "safe"}>
+							{daysUntil} {daysUntil === 1 ? "day" : "days"} away
+						</span>
+						<span className="emoji">{isWithin7Days ? "😱" : "🎉"}</span>
+					</div>
 				)}
 			</div>
 		</div>
