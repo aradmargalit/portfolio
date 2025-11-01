@@ -1,0 +1,102 @@
+@use '../../../constants.scss';
+
+.sweep {
+  @include constants.page-styles;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--color-text);
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    gap: 1em;
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1em;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 1.5em;
+      align-items: center;
+
+      a {
+        color: var(--color-secondary);
+        font-size: 1.1rem;
+        font-weight: 500;
+        text-decoration: none;
+        padding: 0.2em 0.8em;
+        border-radius: 999px;
+        transition: background 0.2s, color 0.2s;
+
+        &:hover,
+        &:focus {
+          background: var(--color-primary);
+          color: #fff;
+        }
+      }
+    }
+
+    a {
+      margin-right: 0;
+      color: var(--color-primary);
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+
+      &:hover {
+        color: var(--color-link-hover);
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      height: 2.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+    text-align: center;
+
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    p {
+      margin: 0;
+      transition: color 0.3s ease;
+      font-size: 3rem;
+      font-weight: bold;
+
+      &.urgent {
+        color: #ff4040;
+      }
+
+      &.safe {
+        color: #40c040;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .skills_content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
