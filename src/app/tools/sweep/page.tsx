@@ -4,6 +4,7 @@ import "./page.scss";
 
 import { IoMdArrowBack } from "@react-icons/all-files/io/IoMdArrowBack";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 // Helper to get next street sweeping date
@@ -57,7 +58,7 @@ function Sweep() {
 		setDaysUntil(diffDays);
 	}, []);
 
-	const isWithin7Days = daysUntil !== null && daysUntil>= 7;
+	const isWithin7Days = daysUntil !== null && daysUntil <= 7;
 
 	return (
 		<div className="sweep">
@@ -69,6 +70,15 @@ function Sweep() {
 				</div>
 			</div>
 			<div className="sweep__content">
+				<div className="background-image-container">
+					<Image
+						src="/truck.png"
+						alt="Street sweeping truck"
+						width={250}
+						height={250}
+						className="background-image"
+					/>
+				</div>
 				<h2>Next street sweeping:</h2>
 				{daysUntil !== null && (
 					<div className="sweep-info">

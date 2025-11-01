@@ -71,6 +71,32 @@
     gap: 1.5rem;
     align-items: center;
     text-align: center;
+    position: relative;
+    min-height: 400px;
+    padding: 40px 20px;
+    justify-content: center;
+    background: transparent;
+    z-index: 1;
+
+    .background-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      pointer-events: none;
+
+      .background-image {
+        width: 60%;
+        height: auto;
+        opacity: 0.10;
+        object-fit: contain;
+      }
+    }
 
     h2 {
       font-size: 3rem;
@@ -88,6 +114,8 @@
       font-weight: bold;
 
       span {
+        position: relative;
+        z-index: 2;
         &.urgent {
           background: linear-gradient(45deg, #ff4040, #ff8080, #ff4040, #ff0000);
           background-size: 300% 300%;
@@ -99,6 +127,8 @@
         }
 
         &.safe {
+          position: relative;
+          z-index: 2;
           background: linear-gradient(45deg, #40c040, #80ff80, #40c040, #00cc00);
           background-size: 300% 300%;
           -webkit-background-clip: text;
