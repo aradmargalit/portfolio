@@ -17,7 +17,7 @@ export default function Landing() {
           <h1>Arad Margalit</h1>
           <h3>Hi there, I&apos;m Arad!</h3>
           <p>
-            I&apos;m currently working as an Engineering Manager at <a href="https://twitch.tv/">Twitch</a>. In my free
+            I&apos;m currently working as a Sr. Engineering Manager at <a href="https://twitch.tv/">Twitch</a>. In my free
             time, I love running, biking, hiking, swimming, and coding.
           </p>
         </div>

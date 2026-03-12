@@ -2,8 +2,14 @@ import '@fontsource/inter';
 import './page.scss';
 
 import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Résumé',
+  description: 'Work experience, education, and skills for Arad Margalit, Sr. Engineering Manager at Twitch.',
+};
 
 import CompanyList from '@/components/CompanyList';
 import EducationView from '@/components/EducationView';

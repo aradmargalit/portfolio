@@ -11,7 +11,7 @@ function EducationView({ education }: EducationProps) {
     <div className="education">
       <h3>{education.name}</h3>
       <p>
-        {education.degree} | {education.graduatedYear}, Minor: {education.minor}
+        {education.degree} | {education.graduatedYear}{education.minor && ` | Minor: ${education.minor}`}
       </p>
       {education.honors && <p>Graduated with Honors: {education.honors}</p>}
     </div>
