@@ -87,14 +87,17 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Container for the countdown info */
+/* Container for the sweep state info */
 .sweep__content .sweep-info {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4em;
   margin: 0;
-  font-size: 4.5rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  text-align: center;
 }
 
 /* Urgent state - red gradient text */

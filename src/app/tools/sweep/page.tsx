@@ -6,58 +6,70 @@ import { IoMdArrowBack } from "@react-icons/all-files/io/IoMdArrowBack";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-// Helper to get next street sweeping date
-function getNextStreetSweepingDate(today: Date): Date {
-	const year = today.getFullYear();
-	const month = today.getMonth();
+type SweepState = "today" | "this-wednesday" | "safe";
 
-	const sweepingDates = getStreetSweepingDatesForMonth(year, month);
-
-	// Find the next sweeping date in current month
-	let next = sweepingDates.find((d) => d > today);
-
-	// If none left this month, check next month
-	if (!next) {
-		const nextMonth = (month + 1) % 12;
-		const nextYear = nextMonth === 0 ? year + 1 : year;
-		const nextMonthDates = getStreetSweepingDatesForMonth(nextYear, nextMonth);
-		next = nextMonthDates[0];
-	}
-
-	return next || new Date(); // Fallback to today if no date found
-}
-
-// Get the 2nd and 4th Wednesday of a given month/year
+// Get the 2nd and 4th Wednesdays of a given month/year
 function getStreetSweepingDatesForMonth(year: number, month: number): Date[] {
 	const dates: Date[] = [];
 	let count = 0;
 	for (let day = 1; day <= 31; day++) {
 		const date = new Date(year, month, day);
-		if (date.getMonth() !== month) break; // stop when month rolls over
+		if (date.getMonth() !== month) break;
 		if (date.getDay() === 3) {
-			// 3 = Wednesday
 			count++;
-			if (count === 2 || count === 4) {
-				dates.push(date);
-			}
+			if (count === 2 || count === 4) dates.push(date);
 		}
 	}
 	return dates;
 }
 
+// Returns whether "this Wednesday" (or today, if today is Wednesday) is a sweep day
+function getSweepState(today: Date): SweepState {
+	const daysUntilWed = (3 - today.getDay() + 7) % 7;
+
+	const thisWednesday = new Date(today);
+	thisWednesday.setDate(today.getDate() + daysUntilWed);
+	thisWednesday.setHours(0, 0, 0, 0);
+
+	const sweepDates = getStreetSweepingDatesForMonth(
+		thisWednesday.getFullYear(),
+		thisWednesday.getMonth(),
+	);
+	const isSweepWed = sweepDates.some(
+		(d) => d.getTime() === thisWednesday.getTime(),
+	);
+
+	if (!isSweepWed) return "safe";
+	if (daysUntilWed === 0) return "today";
+	return "this-wednesday";
+}
+
+const STATE_CONFIG: Record<SweepState, { label: string; emoji: string; className: string }> = {
+	today: {
+		label: "Street sweeping is TODAY!",
+		emoji: "🚨",
+		className: "urgent",
+	},
+	"this-wednesday": {
+		label: "Street sweeping this Wednesday!",
+		emoji: "😱",
+		className: "urgent",
+	},
+	safe: {
+		label: "NO street sweeping this Wednesday",
+		emoji: "🎉",
+		className: "safe",
+	},
+};
+
 function Sweep() {
-	const [daysUntil, setDaysUntil] = useState<number | null>(null);
+	const [state, setState] = useState<SweepState | null>(null);
 
 	useEffect(() => {
-		const today = new Date();
-		const nextSweep = getNextStreetSweepingDate(today);
-		const diffDays = Math.ceil(
-			(nextSweep.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
-		);
-		setDaysUntil(diffDays);
+		setState(getSweepState(new Date()));
 	}, []);
 
-	const isWithin7Days = daysUntil !== null && daysUntil <= 7;
+	const config = state ? STATE_CONFIG[state] : null;
 
 	return (
 		<div className="sweep">
@@ -69,13 +81,11 @@ function Sweep() {
 				</div>
 			</div>
 			<div className="sweep__content">
-				<h2>Next street sweeping:</h2>
-				{daysUntil !== null && (
+				<h2>Street sweeping this Wednesday?</h2>
+				{config && (
 					<div className="sweep-info">
-						<span className={isWithin7Days ? "urgent" : "safe"}>
-							{daysUntil} {daysUntil === 1 ? "day" : "days"} away
-						</span>
-						<span className="emoji">{isWithin7Days ? "😱" : "🎉"}</span>
+						<span className={config.className}>{config.label}</span>
+						<span className="emoji">{config.emoji}</span>
 					</div>
 				)}
 			</div>
