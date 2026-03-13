@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "next lint --fix"
+    "lint:fix": "next lint --fix",
+    "test": "vitest run"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.8",
@@ -35,6 +36,7 @@
     "eslint-plugin-unused-imports": "^4.3.0",
     "prettier": "^3.6.2",
     "sass": "^1.93.3",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
   }
 }
