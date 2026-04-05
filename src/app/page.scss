@@ -34,13 +34,13 @@ html, body {
   transition: background 0.2s, color 0.2s;
 }
 
-.landing h1, .landing h3, .landing p, .landing .resume-link, .landing .socials, .landing {
+.landing h1, .landing h2, .landing p, .landing .resume-link, .landing .socials, .landing {
   font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 a {
   color: var(--color-link);
-  text-decoration: none;
+  text-decoration: underline;
   transition: color 0.2s;
 }
 a:hover {
@@ -82,8 +82,6 @@ a:hover {
 
     img,
     picture {
-      height: 350px;
-      width: 350px;
       border-radius: 50%;
     }
 
@@ -144,7 +142,7 @@ a:hover {
     margin-bottom: 0.5em;
   }
 
-  h3 {
+  h2 {
     font-size: 1.5rem;
     color: var(--color-secondary);
     margin-bottom: 1em;

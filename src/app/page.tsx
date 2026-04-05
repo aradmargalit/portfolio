@@ -11,11 +11,11 @@ import profile from './profile.jpeg';
 
 export default function Landing() {
   return (
-    <div className="landing">
+    <main className="landing">
       <div className="grid">
         <div>
           <h1>Arad Margalit</h1>
-          <h3>Hi there, I&apos;m Arad!</h3>
+          <h2>Hi there, I&apos;m Arad!</h2>
           <p>
             I&apos;m currently working as a Sr. Engineering Manager at <a href="https://twitch.tv/">Twitch</a>. In my free
             time, I love running, biking, hiking, swimming, and coding.
@@ -50,6 +50,6 @@ export default function Landing() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }

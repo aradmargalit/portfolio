@@ -30,7 +30,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
       suppressHydrationWarning
       style={{
         background: 'var(--color-card)',
