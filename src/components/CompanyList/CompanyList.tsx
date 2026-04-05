@@ -1,5 +1,6 @@
 import './CompanyList.scss';
 
+import Image from 'next/image';
 import React from 'react';
 
 import { Company } from '../../types';
@@ -31,9 +32,14 @@ function RoleView({ role }: { role: Company['roles'][number] }) {
 function CompanyView({ company }: { company: Company }) {
   return (
     <li className="company-view">
-      <a href={company.link} target="_blank" rel="noreferrer">
-        <h3>{company.name}</h3>
-      </a>
+      <div className="company-header">
+        {company.logo && (
+          <Image src={company.logo} alt={`${company.name} logo`} width={32} height={32} className="company-logo" />
+        )}
+        <a href={company.link} target="_blank" rel="noreferrer">
+          <h3>{company.name}</h3>
+        </a>
+      </div>
       <ul>
         {company.roles.map((role) => (
           <RoleView key={role.title} role={role} />

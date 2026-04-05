@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 export type Skill = { skill: string; startYear: number };
 
 export type Education = {
@@ -6,6 +8,7 @@ export type Education = {
   minor?: string;
   graduatedYear: number;
   honors?: string;
+  logo?: StaticImageData;
 };
 
 export type Role = {
@@ -18,5 +21,6 @@ export type Role = {
 export type Company = {
   name: string;
   link: string;
+  logo?: StaticImageData;
   roles: Role[];
 };

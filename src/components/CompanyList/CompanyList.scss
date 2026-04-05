@@ -7,6 +7,17 @@
       border-bottom: 1px solid gray;
     }
 
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .company-logo {
+      object-fit: contain;
+      border-radius: 4px;
+    }
+
     a {
       text-decoration: underline;
       text-underline-offset: 2px;

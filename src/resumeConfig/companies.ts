@@ -1,9 +1,14 @@
 // Declaratively list experiences and skills so they can be dynamically rendered
 
+import hitachiLogo from '../logos/hitachi.png';
+import huluLogo from '../logos/hulu.png';
+import tempoLogo from '../logos/tempo.jpeg';
+import twitchLogo from '../logos/twitch.png';
 import { Company } from '../types';
 
 const hitachi: Company = {
   link: 'https://www.hitachivantara.com/en-us/services/consulting-services.html',
+  logo: hitachiLogo,
   name: 'Hitachi Consulting',
   roles: [
     {
@@ -39,6 +44,7 @@ const hitachi: Company = {
 
 const hulu: Company = {
   link: 'http://www.hulu.com/',
+  logo: huluLogo,
   name: 'Hulu, LLC',
   roles: [
     {
@@ -76,6 +82,7 @@ const hulu: Company = {
 
 const tempo: Company = {
   link: 'https://tempo.fit/',
+  logo: tempoLogo,
   name: 'Tempo',
   roles: [
     {
@@ -104,6 +111,7 @@ const tempo: Company = {
 
 const twitch: Company = {
   link: 'https://twitch.tv/',
+  logo: twitchLogo,
   name: 'Twitch',
   roles: [
     {
