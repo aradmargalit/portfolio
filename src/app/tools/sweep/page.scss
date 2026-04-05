@@ -19,28 +19,6 @@
       gap: 1em;
     }
 
-    .header-links {
-      display: flex;
-      gap: 1.5em;
-      align-items: center;
-
-      a {
-        color: var(--color-secondary);
-        font-size: 1.1rem;
-        font-weight: 500;
-        text-decoration: none;
-        padding: 0.2em 0.8em;
-        border-radius: 999px;
-        transition: background 0.2s, color 0.2s;
-
-        &:hover,
-        &:focus {
-          background: var(--color-primary);
-          color: #fff;
-        }
-      }
-    }
-
     a {
       margin-right: 0;
       color: var(--color-primary);
@@ -53,16 +31,6 @@
         color: var(--color-link-hover);
       }
     }
-
-    h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      height: 2.5rem;
-    }
   }
 
   &__content {
@@ -72,90 +40,274 @@
     align-items: center;
     text-align: center;
     position: relative;
-    min-height: 300px;
+    min-height: 340px;
     padding: 40px 20px;
     justify-content: center;
   }
 }
 
-
-/* Heading for street sweeping */
 .sweep__content h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   margin: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Container for the sweep state info */
-.sweep__content .sweep-info {
+/* ── Truck wrapper ─────────────────────────────── */
+.truck-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  height: 160px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.4em;
+  cursor: pointer;
+  border-radius: 12px;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  &.idle .truck-svg {
+    animation: truckIdle 1.6s ease-in-out infinite;
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.3));
+    transition: filter 0.2s;
+  }
+
+  &.idle:hover .truck-svg {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4)) brightness(1.06);
+  }
+
+  &.sweeping .truck-svg {
+    animation: truckDrive 1.5s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.truck-svg {
+  width: 290px;
+  height: 130px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Spinning brush ────────────────────────────── */
+.brush-group {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: brushSpin 0.35s linear infinite;
+}
+
+@keyframes brushSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Smoke puffs ───────────────────────────────── */
+.smoke {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+.smoke1 { animation: smokePuff 1.2s ease-in-out infinite; }
+.smoke2 { animation: smokePuff 1.2s ease-in-out infinite 0.4s; }
+
+@keyframes smokePuff {
+  0%, 100% { opacity: 0.5; transform: translateY(0) scale(1); }
+  50%       { opacity: 0.15; transform: translateY(-4px) scale(1.3); }
+}
+
+/* ── Water drops ───────────────────────────────── */
+.drop {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.drop1 { animation: dropFade 0.9s ease-in infinite; }
+.drop2 { animation: dropFade 0.9s ease-in infinite 0.2s; }
+.drop3 { animation: dropFade 0.9s ease-in infinite 0.4s; }
+.drop4 { animation: dropFade 0.9s ease-in infinite 0.6s; }
+
+@keyframes dropFade {
+  0%   { opacity: 0.9; transform: translateY(0); }
+  100% { opacity: 0;   transform: translateY(7px); }
+}
+
+/* ── Sweep trail ───────────────────────────────── */
+.sweep-trail {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--trail-color, #aaa);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0.85;
+  z-index: 1;
+  animation: trailGrow 1.5s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+}
+
+@keyframes trailGrow {
+  0%   { transform: scaleX(0); opacity: 0; }
+  12%  { opacity: 0.85; }
+  100% { transform: scaleX(1); opacity: 0.85; }
+}
+
+/* ── Truck animations ──────────────────────────── */
+@keyframes truckIdle {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  20%       { transform: translateY(-7px) rotate(-1deg); }
+  45%       { transform: translateY(-9px) rotate(0.5deg); }
+  65%       { transform: translateY(-5px) rotate(1deg); }
+  85%       { transform: translateY(-2px) rotate(0deg); }
+}
+
+@keyframes truckDrive {
+  0%   { transform: translateX(0) rotate(0deg); }
+  8%   { transform: translateX(-20px) rotate(-3deg); }   /* rev / lurch back */
+  18%  { transform: translateX(15px) rotate(1.5deg); }   /* lurch forward */
+  100% { transform: translateX(220%) rotate(0deg); }     /* drive off right */
+}
+
+/* ── Tap hint ──────────────────────────────────── */
+.tap-hint {
+  font-size: 1.15rem;
+  color: var(--color-text);
   margin: 0;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-align: center;
+  animation: hintPulse 2.4s ease-in-out infinite;
 }
 
-/* Urgent state - red gradient text */
-.sweep__content .sweep-info .urgent {
-  background: linear-gradient(45deg, #ff4040, #ff8080, #ff4040, #ff0000);
+.tap-arrow {
+  display: inline-block;
+  animation: arrowBounce 1.1s ease-in-out infinite;
+  margin-right: 0.2em;
+}
+
+@keyframes hintPulse {
+  0%, 100% { opacity: 0.85; }
+  50%       { opacity: 0.45; }
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* ── Result reveal ─────────────────────────────── */
+.sweep-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  animation: resultDrop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes resultDrop {
+  0%   { opacity: 0; transform: scale(0.55) translateY(-24px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.result-emoji {
+  font-size: 5rem;
+  line-height: 1;
+  animation: emojiPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s both;
+}
+
+@keyframes emojiPop {
+  0%   { transform: scale(0) rotate(-25deg); }
+  60%  { transform: scale(1.3) rotate(6deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.result-headline {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.result-headline.urgent {
+  background: linear-gradient(45deg, #ff2020, #ff8080, #ff2020, #ff0000);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
-  animation: urgentGradient 3s ease infinite;
+  animation: urgentGradient 2.5s ease infinite;
 }
 
-/* Safe state - green gradient text */
-.sweep__content .sweep-info .safe {
-  background: linear-gradient(45deg, #40c040, #80ff80, #40c040, #00cc00);
+.result-headline.safe {
+  background: linear-gradient(45deg, #20cc20, #80ff80, #20cc20, #00cc00);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow: 0 4px 8px rgba(0, 128, 0, 0.3);
-  animation: safeGradient 3s ease infinite;
+  animation: safeGradient 2.5s ease infinite;
 }
 
-/* Emoji styling */
-.sweep__content .sweep-info .emoji {
-  margin-left: 0.5rem;
+.result-subtext {
+  font-size: 1.25rem;
+  opacity: 0.7;
+  margin: 0;
 }
 
-/* Animation keyframes for gradients */
+.reset-btn {
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: 2px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+  font-family: inherit;
+
+  &:hover {
+    background: var(--color-primary);
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+/* ── Gradient keyframes ────────────────────────── */
 @keyframes urgentGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
 @keyframes safeGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
 }
 
-/* Responsive styles */
-@media (max-width: 900px) {
-  .skills_content {
-    flex-direction: column;
-    gap: 1.5rem;
+/* ── Responsive ────────────────────────────────── */
+@media (max-width: 600px) {
+  .sweep__content h2 {
+    font-size: 1.8rem;
+  }
+
+  .result-headline {
+    font-size: 2rem;
+  }
+
+  .result-emoji {
+    font-size: 3.5rem;
+  }
+
+  .truck-wrapper {
+    max-width: 280px;
+    height: 140px;
+  }
+
+  .truck-svg {
+    width: 240px;
+    height: 110px;
   }
 }
