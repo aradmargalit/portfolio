@@ -21,7 +21,15 @@ export default function Landing() {
             time, I love running, biking, hiking, swimming, and coding.
           </p>
         </div>
-        <Image className="main-photo" src={profile} alt="Picture of Arad hiking" placeholder="blur" />
+        <Image
+          className="main-photo"
+          src={profile}
+          alt="Picture of Arad hiking"
+          placeholder="blur"
+          width={320}
+          height={320}
+          sizes="(max-width: 800px) 200px, 320px"
+        />
         <div className="resume-socials">
           <Link className="resume-link" href="/resume">
             <FaRegFileAlt style={{ marginRight: 8, verticalAlign: 'middle' }} />
