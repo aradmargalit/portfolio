@@ -31,7 +31,7 @@ export default function Landing() {
           sizes="(max-width: 800px) 200px, 320px"
         />
         <div className="resume-socials">
-          <Link className="resume-link" href="/resume">
+          <Link className="resume-link" href="/resume" prefetch={false}>
             <FaRegFileAlt style={{ marginRight: 8, verticalAlign: 'middle' }} />
             <span>Résumé</span>
           </Link>
