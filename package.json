@@ -13,7 +13,6 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@fontsource/inter": "^5.2.8",
     "@react-icons/all-files": "^4.1.0",
     "next": "^16.0.1",
     "react": "^19.2.0",

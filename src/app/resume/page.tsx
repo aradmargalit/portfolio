@@ -1,4 +1,3 @@
-import '@fontsource/inter';
 import './page.scss';
 
 import { IoMdArrowBack } from '@react-icons/all-files/io/IoMdArrowBack';

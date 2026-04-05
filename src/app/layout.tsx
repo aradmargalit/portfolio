@@ -1,7 +1,13 @@
-import '@fontsource/inter';
-
+import { Inter } from 'next/font/google';
 import { Metadata } from 'next';
 import React from 'react';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '700', '800'],
+  display: 'swap',
+  variable: '--font-inter',
+});
 
 import ThemeToggle from '../components/ThemeToggle';
 
@@ -51,7 +57,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={inter.className}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <script

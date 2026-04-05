@@ -30,13 +30,9 @@
 html, body {
   background: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   transition: background 0.2s, color 0.2s;
 }
 
-.landing h1, .landing h2, .landing p, .landing .resume-link, .landing .socials, .landing {
-  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
-}
 
 a {
   color: var(--color-link);
@@ -136,7 +132,6 @@ a:hover {
   }
 
   h1 {
-    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 0.5em;
@@ -144,6 +139,7 @@ a:hover {
 
   h2 {
     font-size: 1.5rem;
+    font-weight: 400;
     color: var(--color-secondary);
     margin-bottom: 1em;
   }
