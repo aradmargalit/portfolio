@@ -1,48 +1,5 @@
 @use '../constants.scss';
 
-/* Modern, themeable base styles for light/dark mode */
-:root {
-  --color-bg: #f7f9fb;
-  --color-bg-alt: #fff;
-  --color-text: #1a1a1a;
-  --color-primary: #2563eb;
-  --color-secondary: #64748b;
-  --color-border: #e5e7eb;
-  --color-card: #fff;
-  --color-link: #2563eb;
-  --color-link-hover: #1e40af;
-  --shadow-card: 0 2px 16px 0 rgba(0,0,0,0.06);
-}
-
-[data-theme='dark'] {
-  --color-bg: #18181b;
-  --color-bg-alt: #23272f;
-  --color-text: #f3f4f6;
-  --color-primary: #60a5fa;
-  --color-secondary: #94a3b8;
-  --color-border: #334155;
-  --color-card: #23272f;
-  --color-link: #60a5fa;
-  --color-link-hover: #2563eb;
-  --shadow-card: 0 2px 16px 0 rgba(0,0,0,0.25);
-}
-
-html, body {
-  background: var(--color-bg);
-  color: var(--color-text);
-  transition: background 0.2s, color 0.2s;
-}
-
-
-a {
-  color: var(--color-link);
-  text-decoration: underline;
-  transition: color 0.2s;
-}
-a:hover {
-  color: var(--color-link-hover);
-}
-
 .landing {
   @include constants.page-styles;
 
