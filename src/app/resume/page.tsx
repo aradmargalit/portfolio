@@ -6,8 +6,8 @@ import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: 'Résumé',
   description: 'Work experience, education, and skills for Arad Margalit, Sr. Engineering Manager at Twitch.',
+  title: 'Résumé',
 };
 
 import CompanyList from '@/components/CompanyList';
