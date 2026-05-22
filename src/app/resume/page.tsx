@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 import CompanyList from '@/components/CompanyList';
 import EducationView from '@/components/EducationView';
 import SkillList from '@/components/SkillList';
-import { companies, education, skills } from '@/resumeConfig';
+import { aiTools, awsSkills, companies, education, skills } from '@/resumeConfig';
 
 function Resume() {
   return (
@@ -43,6 +43,10 @@ function Resume() {
         <div id="skills" className="skills section card">
           <h2>Skills & Technology</h2>
           <SkillList skills={skills} />
+          <h3 className="skills__subsection-heading">AWS</h3>
+          <SkillList skills={awsSkills} />
+          <h3 className="skills__subsection-heading">AI Tools</h3>
+          <SkillList skills={aiTools} />
         </div>
       </div>
     </div>

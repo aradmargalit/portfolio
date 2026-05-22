@@ -119,6 +119,14 @@
     li {
       color: var(--color-text);
     }
+
+    .skills__subsection-heading {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--color-secondary, var(--color-primary));
+      margin: 1.5rem 0 0.75rem;
+      opacity: 0.8;
+    }
   }
 
   .section {

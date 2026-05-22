@@ -7,6 +7,7 @@ import React, { useMemo } from 'react';
 import {
   FaAngular,
   FaAws,
+  FaBrain,
   FaCss3Alt,
   FaCuttlefish,
   FaDatabase,
@@ -22,6 +23,7 @@ import {
   FaPhp,
   FaPython,
   FaReact,
+  FaRobot,
   FaRust,
   FaSass,
   FaSwift,
@@ -29,14 +31,16 @@ import {
 } from 'react-icons/fa';
 import { FaGolang } from 'react-icons/fa6';
 import {
+  SiAnthropic,
   SiDatadog,
   SiGatsby,
   SiGraphql,
   SiKubernetes,
   SiMysql,
+  SiNestjs,
   SiNextdotjs,
   SiPostgresql,
-  SiSpinnaker,
+  SiRuby,
   SiTerraform,
   SiTypescript,
   SiVault,
@@ -50,9 +54,13 @@ interface SkillListProps {
 
 // Map skill names to icons
 const skillIcons: Record<string, IconType> = {
+  'Agentic Workflows': FaBrain,
   AWS: FaAws,
+  'AWS Bedrock': FaAws,
   Angular: FaAngular,
   C: FaCuttlefish,
+  Claude: SiAnthropic,
+  'Custom Agents': FaRobot,
   'C#': FaCuttlefish,
   'C++': FaCuttlefish,
   CSS: FaCss3Alt,
@@ -73,6 +81,7 @@ const skillIcons: Record<string, IconType> = {
   Kubernetes: SiKubernetes,
   Linux: FaLinux,
   MySQL: SiMysql,
+  NestJS: SiNestjs,
   NextJS: SiNextdotjs,
   'Node.js': FaNodeJs,
   NodeJS: FaNodeJs,
@@ -81,10 +90,9 @@ const skillIcons: Record<string, IconType> = {
   Python: FaPython,
   React: FaReact,
   ReactJS: FaReact,
-  Ruby: FaCuttlefish,
+  Ruby: SiRuby,
   Rust: FaRust,
   Sass: FaSass,
-  Spinnaker: SiSpinnaker,
   Swift: FaSwift,
   Terraform: SiTerraform,
   Typescript: SiTypescript,
