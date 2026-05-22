@@ -54,17 +54,17 @@ interface SkillListProps {
 
 // Map skill names to icons
 const skillIcons: Record<string, IconType> = {
-  'Agentic Workflows': FaBrain,
   AWS: FaAws,
   'AWS Bedrock': FaAws,
+  'Agentic Workflows': FaBrain,
   Angular: FaAngular,
   C: FaCuttlefish,
-  Claude: SiAnthropic,
-  'Custom Agents': FaRobot,
   'C#': FaCuttlefish,
   'C++': FaCuttlefish,
   CSS: FaCss3Alt,
   CSS3: FaCss3Alt,
+  Claude: SiAnthropic,
+  'Custom Agents': FaRobot,
   Database: FaDatabase,
   Datadog: SiDatadog,
   Docker: FaDocker,

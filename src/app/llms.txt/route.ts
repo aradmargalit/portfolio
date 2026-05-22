@@ -18,9 +18,7 @@ export function GET() {
     })
     .join('\n\n');
 
-  const skillsSection = skills
-    .map((s) => `${s.skill} (${currentYear - s.startYear}+ yrs)`)
-    .join(', ');
+  const skillsSection = skills.map((s) => `${s.skill} (${currentYear - s.startYear}+ yrs)`).join(', ');
 
   const awsSection = awsSkills.map((s) => s.skill).join(', ');
 
