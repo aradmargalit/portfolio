@@ -60,7 +60,11 @@ function playPop() {
 type Phase = 'counting' | 'paused' | 'revealed';
 
 export default function WesQuiz() {
-  const [deck, setDeck] = useState<QuizItem[]>(() => shuffle(ITEMS));
+  const [deck, setDeck] = useState<QuizItem[]>(ITEMS);
+
+  useEffect(() => {
+    setDeck(shuffle(ITEMS));
+  }, []);
   const [idx, setIdx] = useState(0);
   const [phase, setPhase] = useState<Phase>('counting');
   const [remaining, setRemaining] = useState(COUNTDOWN_SECONDS);
@@ -150,9 +154,8 @@ export default function WesQuiz() {
           onClick={handleImageTap}
           aria-label={phase === 'revealed' ? 'Next' : phase === 'counting' ? 'Pause timer' : 'Resume timer'}
         >
-          {/* Plain <img> keeps things simple for user-supplied files in /public */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={current.image} alt="Guess what this is" draggable={false} />
+          <img src={current.url} alt="Guess what this is" draggable={false} />
           {phase === 'revealed' && (
             <div className="reveal-overlay" aria-live="polite">
               <span className="reveal-text">{current.name}</span>
