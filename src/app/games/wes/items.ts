@@ -17,4 +17,6 @@ export const ITEMS: QuizItem[] = [
   { name: 'Olaf', url: 'https://pngimg.com/uploads/frozen/frozen_PNG97.png' },
   { name: 'Buffalo', url: 'https://upload.wikimedia.org/wikipedia/commons/5/51/Indian_Water_Buffalo_Bubalus_arnee_by_Dr_Raju_Kasambe_IMG_0347_%2811%29_%28cropped%29.jpg' },
   { name: 'Remy', url: 'https://www.therarebreedmeatcompany.co.uk/wp-content/uploads/2022/08/Untitled-design.jpg' },
+  { name: 'Lightning McQueen', url: 'https://upload.wikimedia.org/wikipedia/en/8/82/Lightning_McQueen.png' },
+  { name: 'Mater', url: 'https://standingstills.com/cdn/shop/products/CAC357-1-1.jpg?v=1629418790' },
 ];

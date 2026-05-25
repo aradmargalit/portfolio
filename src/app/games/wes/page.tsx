@@ -59,12 +59,25 @@ function playPop() {
 
 type Phase = 'counting' | 'paused' | 'revealed';
 
+function fuzzyMatch(query: string, name: string): boolean {
+  const q = query.toLowerCase();
+  const n = name.toLowerCase();
+  let qi = 0;
+  for (let i = 0; i < n.length && qi < q.length; i++) {
+    if (n[i] === q[qi]) qi++;
+  }
+  return qi === q.length;
+}
+
 export default function WesQuiz() {
   const [deck, setDeck] = useState<QuizItem[]>(ITEMS);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     setDeck(shuffle(ITEMS));
   }, []);
+
+  const searchResults = search ? ITEMS.filter((item) => fuzzyMatch(search, item.name)) : [];
   const [idx, setIdx] = useState(0);
   const [phase, setPhase] = useState<Phase>('counting');
   const [remaining, setRemaining] = useState(COUNTDOWN_SECONDS);
@@ -101,6 +114,16 @@ export default function WesQuiz() {
     }, 1000);
     return clearTick;
   }, [phase, clearTick]);
+
+  const jumpTo = useCallback((item: QuizItem) => {
+    const rest = ITEMS.filter((i) => i !== item);
+    setDeck([item, ...shuffle(rest)]);
+    setIdx(0);
+    setPhase('counting');
+    setRemaining(COUNTDOWN_SECONDS);
+    setSearch('');
+    clearTick();
+  }, [clearTick]);
 
   const next = useCallback(() => {
     const nextIdx = idx + 1;
@@ -145,6 +168,27 @@ export default function WesQuiz() {
         </Link>
         <h1>What is it?</h1>
         <div className="wes__spacer" />
+      </div>
+
+      <div className="wes__search">
+        <input
+          type="search"
+          placeholder="Jump to..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          aria-label="Search for a character"
+        />
+        {searchResults.length > 0 && (
+          <ul className="wes__search-results">
+            {searchResults.map((item) => (
+              <li key={item.name}>
+                <button type="button" onClick={() => jumpTo(item)}>
+                  {item.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
       <div className="wes__stage">
