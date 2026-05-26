@@ -72,7 +72,7 @@ function fuzzyMatch(query: string, name: string): boolean {
 }
 
 export default function WesQuiz() {
-  const [deck, setDeck] = useState<QuizItem[]>(ITEMS);
+  const [deck, setDeck] = useState<QuizItem[]>([]);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
@@ -192,7 +192,7 @@ export default function WesQuiz() {
     };
     el.addEventListener('touchmove', onMove, { passive: false });
     return () => el.removeEventListener('touchmove', onMove);
-  }, []);
+  }, [!!current]);
 
   const handleTouchStart = useCallback((e: React.TouchEvent) => {
     touchStartXRef.current = e.touches[0].clientX;
@@ -248,13 +248,16 @@ export default function WesQuiz() {
   const nextItem = deck[(idx + 1) % deck.length];
 
   if (!current) {
-    return (
-      <div className="wes">
-        <p>
-          No items configured yet. Add some to <code>src/app/games/wes/items.ts</code>.
-        </p>
-      </div>
-    );
+    if (ITEMS.length === 0) {
+      return (
+        <div className="wes">
+          <p>
+            No items configured yet. Add some to <code>src/app/games/wes/items.ts</code>.
+          </p>
+        </div>
+      );
+    }
+    return null;
   }
 
   return (
