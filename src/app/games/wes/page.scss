@@ -118,6 +118,9 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.2s ease;
+  touch-action: pan-y;
+  user-select: none;
+  will-change: transform;
 
   img {
     width: 100%;
@@ -125,10 +128,6 @@
     object-fit: contain;
     user-select: none;
     -webkit-user-drag: none;
-  }
-
-  &:active {
-    transform: scale(0.985);
   }
 
   &.phase-counting img {
@@ -152,6 +151,58 @@
 @keyframes subtleWobble {
   0%, 100% { transform: rotate(0deg); }
   50%      { transform: rotate(0.6deg); }
+}
+
+.card-enter-from-left {
+  animation: enterFromLeft 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.card-enter-from-right {
+  animation: enterFromRight 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes enterFromLeft {
+  from { transform: translateX(-120vw) rotate(-12deg); }
+  to   { transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes enterFromRight {
+  from { transform: translateX(120vw) rotate(12deg); }
+  to   { transform: translateX(0) rotate(0deg); }
+}
+
+.swipe-hint {
+  position: absolute;
+  top: 1.2rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  pointer-events: none;
+  z-index: 5;
+  animation: hintFade 0.12s ease forwards;
+
+  &--back {
+    left: 1.2rem;
+    background: rgba(100, 200, 100, 0.88);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  &--next {
+    right: 1.2rem;
+    background: rgba(255, 100, 100, 0.88);
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes hintFade {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .reveal-overlay {
@@ -260,6 +311,21 @@
   gap: 0.75rem;
 }
 
+.btn-drain {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: inherit;
+  transform-origin: left;
+  animation: drainBtn 3s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes drainBtn {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
 .btn {
   font-family: inherit;
   font-weight: 700;
@@ -269,6 +335,8 @@
   cursor: pointer;
   transition: transform 0.1s ease, background 0.2s, color 0.2s;
   border: 2px solid var(--color-primary);
+  position: relative;
+  overflow: hidden;
 
   &:active {
     transform: scale(0.95);

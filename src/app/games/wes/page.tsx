@@ -8,6 +8,8 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ITEMS, QuizItem } from './items';
 
 const COUNTDOWN_SECONDS = 10;
+const SWIPE_THRESHOLD = 72;
+const AUTO_ADVANCE_SECONDS = 3;
 
 function shuffle<T>(arr: T[]): T[] {
   const a = arr.slice();
@@ -83,6 +85,18 @@ export default function WesQuiz() {
   const [remaining, setRemaining] = useState(COUNTDOWN_SECONDS);
   const tickRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
+  const [autoAdvanceRemaining, setAutoAdvanceRemaining] = useState<number | null>(null);
+
+  // Swipe state
+  const [dragX, setDragX] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [swipeOut, setSwipeOut] = useState<'left' | 'right' | null>(null);
+  const [enterDir, setEnterDir] = useState<'left' | 'right' | null>(null);
+  const historyRef = useRef<number[]>([]);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchStartYRef = useRef<number | null>(null);
+  const cardRef = useRef<HTMLButtonElement>(null);
+
   const current = deck[idx];
 
   const clearTick = useCallback(() => {
@@ -106,6 +120,7 @@ export default function WesQuiz() {
         if (r <= 1) {
           clearTick();
           setPhase('revealed');
+          setAutoAdvanceRemaining(AUTO_ADVANCE_SECONDS);
           playPop();
           return 0;
         }
@@ -122,10 +137,12 @@ export default function WesQuiz() {
     setPhase('counting');
     setRemaining(COUNTDOWN_SECONDS);
     setSearch('');
+    historyRef.current = [];
     clearTick();
   }, [clearTick]);
 
   const next = useCallback(() => {
+    setAutoAdvanceRemaining(null);
     const nextIdx = idx + 1;
     if (nextIdx >= deck.length) {
       setDeck(shuffle(ITEMS));
@@ -136,6 +153,84 @@ export default function WesQuiz() {
     setRemaining(COUNTDOWN_SECONDS);
     setPhase('counting');
   }, [idx, deck.length]);
+
+  const prev = useCallback(() => {
+    setAutoAdvanceRemaining(null);
+    const h = historyRef.current;
+    if (h.length === 0) return;
+    const prevIdx = h[h.length - 1];
+    historyRef.current = h.slice(0, -1);
+    setIdx(prevIdx);
+    setRemaining(COUNTDOWN_SECONDS);
+    setPhase('counting');
+  }, []);
+
+  // Auto-advance after auto-reveal
+  useEffect(() => {
+    if (autoAdvanceRemaining === null) return;
+    if (autoAdvanceRemaining === 0) {
+      next();
+      return;
+    }
+    const t = setTimeout(() => setAutoAdvanceRemaining((r) => r! - 1), 1000);
+    return () => clearTimeout(t);
+  }, [autoAdvanceRemaining, next]);
+
+  // Non-passive touchmove to allow preventDefault for horizontal swipes
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const onMove = (e: TouchEvent) => {
+      if (touchStartXRef.current === null || touchStartYRef.current === null) return;
+      const dx = e.touches[0].clientX - touchStartXRef.current;
+      const dy = e.touches[0].clientY - touchStartYRef.current;
+      if (Math.abs(dx) > Math.abs(dy)) {
+        e.preventDefault();
+      }
+      setDragX(dx);
+      setIsDragging(true);
+    };
+    el.addEventListener('touchmove', onMove, { passive: false });
+    return () => el.removeEventListener('touchmove', onMove);
+  }, []);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+  }, []);
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+
+    if (Math.abs(dragX) < SWIPE_THRESHOLD) {
+      setDragX(0);
+      return;
+    }
+
+    const dir = dragX < 0 ? 'left' : 'right';
+
+    if (dir === 'left' && historyRef.current.length === 0) {
+      setDragX(0);
+      return;
+    }
+
+    const capturedIdx = idx;
+    setSwipeOut(dir);
+    setTimeout(() => {
+      setDragX(0);
+      setSwipeOut(null);
+      if (dir === 'right') {
+        setEnterDir('left');
+        historyRef.current = [...historyRef.current, capturedIdx];
+        next();
+      } else {
+        setEnterDir('right');
+        prev();
+      }
+    }, 380);
+  }, [dragX, idx, next, prev]);
 
   const handleImageTap = () => {
     if (phase === 'counting') {
@@ -149,6 +244,8 @@ export default function WesQuiz() {
   };
 
   const progress = useMemo(() => ((COUNTDOWN_SECONDS - remaining) / COUNTDOWN_SECONDS) * 100, [remaining]);
+
+  const nextItem = deck[(idx + 1) % deck.length];
 
   if (!current) {
     return (
@@ -193,13 +290,43 @@ export default function WesQuiz() {
 
       <div className="wes__stage">
         <button
+          ref={cardRef}
           type="button"
-          className={`image-card phase-${phase}`}
+          className={`image-card phase-${phase}${swipeOut ? ` swipe-out-${swipeOut}` : ''}${enterDir ? ` card-enter-from-${enterDir}` : ''}`}
           onClick={handleImageTap}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onAnimationEnd={(e) => {
+            if (e.animationName === 'enterFromLeft' || e.animationName === 'enterFromRight') {
+              setEnterDir(null);
+            }
+          }}
           aria-label={phase === 'revealed' ? 'Next' : phase === 'counting' ? 'Pause timer' : 'Resume timer'}
+          style={{
+            transform: enterDir
+              ? undefined
+              : swipeOut
+              ? swipeOut === 'left'
+                ? 'translateX(-140vw) rotate(-28deg)'
+                : 'translateX(140vw) rotate(28deg)'
+              : `translateX(${dragX}px) rotate(${dragX * 0.05}deg)`,
+            transition: enterDir
+              ? undefined
+              : swipeOut
+              ? 'transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+              : isDragging
+              ? 'none'
+              : 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={current.url} alt="Guess what this is" draggable={false} />
+          {isDragging && dragX < -20 && historyRef.current.length > 0 && (
+            <div className="swipe-hint swipe-hint--back">← Back</div>
+          )}
+          {isDragging && dragX > 20 && (
+            <div className="swipe-hint swipe-hint--next">Next →</div>
+          )}
           {phase === 'revealed' && (
             <div className="reveal-overlay" aria-live="polite">
               <span className="reveal-text">{current.name}</span>
@@ -211,7 +338,7 @@ export default function WesQuiz() {
           {phase !== 'revealed' && (
             <>
               <div className="timer-ring">
-                <div className="timer-fill" style={{ width: `${progress}%` }} />
+                <div className="timer-fill" style={{ width: `${progress}%`, transition: progress === 0 ? 'none' : undefined }} />
               </div>
               <div className={`timer-num ${phase === 'paused' ? 'paused' : ''}`}>
                 {phase === 'paused' ? '⏸' : remaining}
@@ -222,8 +349,12 @@ export default function WesQuiz() {
 
         <div className="controls">
           {phase === 'revealed' ? (
-            <button className="btn primary" onClick={next}>
-              Next →
+            <button
+              className={`btn primary${autoAdvanceRemaining !== null ? ' auto-advancing' : ''}`}
+              onClick={next}
+            >
+              {autoAdvanceRemaining !== null ? `Next → ${autoAdvanceRemaining}` : 'Next →'}
+              {autoAdvanceRemaining !== null && <span className="btn-drain" />}
             </button>
           ) : (
             <button className="btn ghost" onClick={reveal}>
@@ -233,10 +364,14 @@ export default function WesQuiz() {
         </div>
 
         <p className="hint">
-          {phase === 'counting' && 'Tap the picture to pause the timer.'}
+          {phase === 'counting' && 'Tap to pause · swipe right for next · swipe left to go back.'}
           {phase === 'paused' && 'Paused — tap the picture to resume.'}
-          {phase === 'revealed' && 'Tap the picture or hit Next for another!'}
+          {phase === 'revealed' && 'Tap or swipe right for next · swipe left to go back!'}
         </p>
+
+        {/* Preload next image while current card is displayed */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        {nextItem && <img src={nextItem.url} alt="" aria-hidden fetchPriority="low" style={{ display: 'none' }} />}
       </div>
     </div>
   );
